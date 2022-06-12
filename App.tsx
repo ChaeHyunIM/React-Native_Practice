@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Text, View } from 'react-native';
 import RootNavigation from './src/navigation/RootNavigation';
 import useCachedResources from './src/hooks/useCachedResources';
+import 'react-native-gesture-handler';
 
 const App = () => {
   const isLoadingComplete = useCachedResources();

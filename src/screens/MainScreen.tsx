@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text } from 'react-native';
-import { themeStyles } from '../styles/globalStyles';
-import DateMover from '../components/molecules/DateMover';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { useRecoilValue } from 'recoil';
+import DateHeader from '../components/molecules/DateHeader';
+import { themeSelector } from '../store/selector';
+import TimeTable from '../components/organisms/TimeTable';
 
 
 const MainScreen = () => {
+  const theme = useRecoilValue(themeSelector);
   return <SafeAreaView>
-    <ScrollView contentContainerStyle={{ alignItems: 'center' }}
-                style={[themeStyles['background-grey'], { height: '100%' }]}>
-      <DateMover />
-      <Text>TimeTable</Text>
-    </ScrollView>
+    <View
+      style={[theme.background, { height: '100%', paddingTop: 20, paddingHorizontal: '2%', alignItems: 'center' }]}>
+      <DateHeader />
+      <TimeTable />
+    </View>
   </SafeAreaView>;
 };
 

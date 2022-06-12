@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Pressable, View } from 'react-native';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components/native';
 import PreviousDateButton from '../atom/PreviousDateButton';
 import NextDateButton from '../atom/NextDateButton';
@@ -10,15 +10,19 @@ import { currentDateTextSelector } from '../../store/selector';
 
 const CustomText = styled.Text`
   font-family: 'suit-bold';
-  font-size: 18px
+  font-size: 20px
 `;
-
-const DateMover = () => {
-  const setCurrentDate = useSetRecoilState(currentDateState);
+const dayToMilliseconds = 24 * 3600 * 1000;
+const DateHeader = () => {
+  const [currentDate, setCurrentDate] = useRecoilState(currentDateState);
   const currentDateText = useRecoilValue(currentDateTextSelector);
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-      <PreviousDateButton />
+    <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 20 }}>
+      <PreviousDateButton
+        hitSlop={10}
+        onPress={() => {
+          setCurrentDate(new Date(currentDate.getTime() - dayToMilliseconds));
+        }} />
       <Pressable style={{ paddingHorizontal: 10 }}>
         {({ pressed }) => (
           <CustomText>
@@ -26,9 +30,12 @@ const DateMover = () => {
           </CustomText>
         )}
       </Pressable>
-      <NextDateButton />
+
+      <NextDateButton hitSlop={10} onPress={() => {
+        setCurrentDate(new Date(currentDate.getTime() + dayToMilliseconds));
+      }} />
     </View>
   );
 };
 
-export default DateMover;
+export default DateHeader;

@@ -1,5 +1,6 @@
 import { selector } from 'recoil';
-import { currentDateState } from './atoms';
+import { colorChipState, currentDateState } from './atoms';
+import { StyleSheet } from 'react-native';
 
 
 export const currentDateTextSelector = selector({
@@ -20,5 +21,17 @@ export const currentDateDestructuringSelector = selector({
     const currentMonth = currentDateFromAtom.getMonth() + 1;
     const currentDate = currentDateFromAtom.getDate();
     return { year: currentYear, month: currentMonth, date: currentDate };
+  },
+});
+
+export const themeSelector = selector({
+  key: 'themeSelector',
+  get: ({ get }) => {
+    const colorChip = get(colorChipState);
+    return StyleSheet.create({
+      background: {
+        backgroundColor: colorChip.background,
+      },
+    });
   },
 });
