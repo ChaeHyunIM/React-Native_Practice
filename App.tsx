@@ -6,9 +6,13 @@ import { Text, View } from 'react-native';
 import RootNavigation from './src/navigation/RootNavigation';
 import useCachedResources from './src/hooks/useCachedResources';
 import 'react-native-gesture-handler';
+import { useEffect } from 'react';
+import firebase, { db } from './src/utils/firebase';
 
 const App = () => {
   const isLoadingComplete = useCachedResources();
+  useEffect(()=> {
+  },[])
 
   if (isLoadingComplete) return (
     <RecoilRoot>
