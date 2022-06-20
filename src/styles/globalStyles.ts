@@ -4,4 +4,3 @@ export const defaultColorChip = {
   selectedBox: '#000',
   currentTimeHighlight: '#148c00',
 };
-
