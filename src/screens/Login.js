@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Alert } from 'react-native';
 import { Input, Button } from 'react-native-elements';
+import * as ImagePicker from 'expo-image-picker';
+import { MediaLibraryPermissionResponse } from 'expo-image-picker';
 import { auth } from '../../firebase';
 
 function Login({ navigation }) {
