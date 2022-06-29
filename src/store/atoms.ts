@@ -1,9 +1,9 @@
 import { atom } from 'recoil';
 import { defaultColorChip } from '../styles/globalStyles';
 
-export const userIdState = atom({
-  key: 'userIdState',
-  default: '',
+export const userState = atom({
+  key: 'userState',
+  default: {},
 });
 
 export const currentDateState = atom({
@@ -21,5 +21,4 @@ export const tasksForCurrentDate = atom({
 export const colorChipState = atom({
   key: 'colorChipState',
   default: defaultColorChip,
-
 });
