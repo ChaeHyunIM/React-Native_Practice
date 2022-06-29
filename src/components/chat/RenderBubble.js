@@ -6,7 +6,6 @@ import { auth, storageRef } from '../../../firebase';
 
 function RenderBubble({ props }) {
   const { image } = props.currentMessage;
-  // eslint-disable-next-line no-underscore-dangle
   const uid = props.currentMessage.user._id;
   const [selectedImage, setSelectedImage] = useState({
     type: '',
